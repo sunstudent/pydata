@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1月12日的作业</title>
+</head>
+<body>
+    <!-- 11.判断一个年份是否是闰年，并输出2000年到3000年之间的闰年。
+    function find_years(){// 输出 所有的闰年 // 返回一个数组}
+    function check_years(year){//是否是闰年 //返回值是布尔} -->
+
+    <!-- 闰年判断
+    4年一闰年，百年不闰，4百年再闰
+    每4年是一个闰年，但是当年的年份是整百数时，必须是400的倍数才算。
+    -->
+    <script>
+        //输出2000年到3000年之间的闰年
+        // || ‘或’ 两边只要有一个为真的时候 表达式就为真
+        // ！ ‘非’ 非后面的 为真 表达式就为假 后面为假的 表达式就是真的 就是相反的意思
+        function find_years(list) {
+            for(var year=2000; year<=3000; year++){
+                if(year%4==0 && year%100!=0 || year%400==0){
+                    list.push(year)
+                }
+            }
+            console.log(list)
+        }
+        find_years([]);
+
+        //判断一个年份是否是闰年
+        function check_years(year) {
+            if(year%4==0 && year%100!=0 || year%400==0){
+                console.log('该年份是闰年！');
+            }else{
+                console.log('该年份不是闰年！');
+            }
+        }
+        check_years(2017);
+    </script>
+
+    <!-- 老魏版本 -->
+    <script>
+        function cheack_years(year) {
+            if(year > 0){
+                return false;
+            }
+            var condition_1 = year%4 == 0;
+            return condition = condition_1 && condition_2 || condition_3;
+        }
+        function find_years(begin_year,end_year) {
+            var all_years = [];
+            for(var begin_year = 2000; end_year<=3000;year++){
+                var res = check_years(year);
+                if(res){
+                    all_years.push(year)
+                }
+            }
+            return all_years;
+        }
+    </script>
+</body>
+</html>

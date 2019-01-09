@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉折叠</title>
+    <style>
+        html,body{
+            padding: 0;
+            margin: 0;
+        }
+        html{
+            font-size: 14px;
+        }
+        #nav{
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+            /* vw */
+            width: 50vw; 
+            height: 10vh;
+            /* 二分之一屏幕宽 */
+            background-color: #eee;
+        }
+        #nav > div{
+            float: left;
+            width: 25%;
+            height: 100%;
+            box-sizing: border-box;
+            border: 1px solid #333;
+            font-size: 0.8rem;
+            text-align: center; 
+        }
+        #nav > div:nth-child(1) >ul{
+            display: none;
+            background-color: #999;
+        }
+    </style>
+    <script>
+        //动态计算浏览器窗口的大小 动态设置文字大小
+        // documentElement 就是html
+        window_w = window.innerWidth || document.documentElement.clientWidth
+        console.log(window_w)
+        window_w = document.documentElement.clientWidth
+        console.log(window_w)
+        // window.onload =  function () {
+        //     window_w = document.body.clientWidth
+        //     console.log(window_w)
+        // }
+        // 根据宽度设置字体的大小，不会被覆盖
+        var html_el = document.querySelector('html')
+        console.log(html_el)
+        if (window_w <800) {
+            html_el.style.fontSize = '12px'
+        }else if (window_w >= 800) {
+            html_el.style.fontSize = '40px'
+        }
+        
+    </script>
+</head>
+<body>
+    <div id="nav">
+        <div>
+            <span>导航01</span>
+            <img src="img//arrow.png" alt="">
+            <ul>
+                <li>001</li>
+                <li>002</li>
+                <li>003</li>
+                <li>004</li>
+            </ul>
+        </div>
+        <div>导航02</div>
+        <div>导航03</div>
+        <div>导航04</div>
+    </div>
+    <div style="height:50px;background-color:red;color: #fff">
+        123456
+    </div>
+</body>
+<script>
+// 动态计算 元素高度 并进行设置 行高
+    var nav = document.querySelector('#nav')
+    // offsetHeight 和 clientHeight 的区别和使用场景？
+    console.log(nav.offsetHeight,nav.clientHeight)
+    nav.style.lineHeight = nav.offsetHeight + 'px'
+
+    var div_one = nav.querySelector('div')
+    console.log(div_one)
+    var img_one = div_one.querySelector('img')
+    img_one.style.verticalAlign = 'middle'
+    img_one.style.width = '16px'
+
+    /*
+        实现下拉原理：
+        1.使用display属性 none 和 block 对内容进行控制
+        2.对显示的内容 要做处理 BFC 让显示的内容 要脱离文档流
+    */
+    //快速找到点的是谁
+    div_one.onclick = function (event) {
+        var el = event.target
+        // parentNode 查找指定元素的父节点
+        // tagName 表示所指定元素的名称
+        console.log(el.parentNode.tagName)
+        var flag = el.querySelector('ul').style.display
+        if (flag == 'block') {
+            flag = 'none'             
+        }else{
+            flag = 'block'
+        }
+        el.querySelector('ul').style.display = flag 
+    }
+
+</script>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js基础</title>
+</head>
+<body>
+    <!-- js
+    一门语言，重点放在语言上，何为语言？
+
+    javaScript
+    一种脚本语言，是解释执行的语言，特征是边运行边解析（单线程）
+    它能做什么？
+
+    网页特效、用户交互、模态框、表单验证等
+
+    在HTML中如何使用js语言？
+    它是通过 script标签来进行标记，让浏览器去自动识别内容，并解析运行
+    因为是标签，可以放在HTML的任何一个位置
+    运行/解释时/执行时是按照先后顺序来执行
+    一般情况 初始化的js代码放在 head
+    -->
+    <script>
+        alert('1')
+        // 学习一般语言的规则是  变量、函数、常量、面向对象、API和各种操作
+        // js 变量
+        // 变量：在程序运行期间，其值可变的量。
+        //从编程角度上讲，变量是用于存储某类/某种数值的存储器
+
+        //JS中如何使用变量
+        //变量要先声明，再赋值，并且变量可以重新赋值的
+        // 变量声明要使用关键字 var
+
+        var age = 18; //number
+        console.log(typeof age)
+        var money = 100.9 //number
+        console.log(typeof money)
+
+        var name = 'jack Ma';
+        console.log(typeof name)
+      
+        //变量名 的命名方式常用的有2中：匈牙利命名和驼峰命名法
+        // ：
+            //开头字母用变量类型的缩写，其余部分用变量的英文或者英文缩写。
+            // 要求单词的第一个字母大写
+
+            var iMyAge = 18; //int型
+            var  sMyName = 'tom';//string型
+        //驼峰命名法:
+            var myAge = 18;
+            var myName = 'tom';
+
+        //js中字符串的拼接
+        // 代码的执行顺序
+        var vule1 = 1+1+1+1 //4
+        vule1 = 1+1+'1'+1 // 211   
+
+
+        //js语言中的倾述对象是浏览器
+        //存储环境是 内存
+
+        var sex = '♂';
+        var bool_val = true;
+        var null_val = null;
+
+
+        // js 的语句
+        // 1. if
+        if (true) {
+            console.log('True');
+        }  
+        //（条件）、{}作用域，表示这是一个代码块
+        // 作用域是用来指定代码执行的范围。
+
+        // 变量提升 
+        console.log(aName);//未定义就执行，undefild,不影响下面代码的执行。        
+        var aName = 'Jack';
+        if(true){
+            console.log(aName);
+            var aName = 'Rouse';
+            console.log(aName);
+        }else{
+            console.log('false');
+        }
+        console.log(aName);
+        //这是个坑，都是全局变量，结果为Rouse
+        
+        // 18
+
+        var iAge = 27;
+        if (iAge<18) {
+            console.log('未成年');
+        }else if(iAge >=18 && iAge <=30){
+            console.log('青壮年');
+        }else if(iAge >30 && iAge <=65){
+            console.log('壮年');
+        }else if(iAge>65 && iAge<80){
+            console.log('退休');
+        }else{
+            console.log('见毛主席')
+            if (iAge === 100) {  // === 表示恒等  == 表示约等
+                console.log('百岁老人')
+            }
+        }
+
+        if (1.0+2.0 == 3.0) {
+            console.log('3.0')
+        }else{
+            console.log('不等于3.0')
+        }
+
+        //swith 直接匹配，匹配不到直接运行default,不会进行一条一条验证！
+        var sName = 'tom';
+        switch (sName) {    //匹配的变量的值  可以使字符串、number
+            case 'tom':
+                console.log('tom')
+                break; //跳出当前swith
+            case 'tom1':
+                console.log('tom1')
+                break;
+            default:
+                console.log('如果条件都不满足则执行该语句')
+                break;
+        }
+
+        // for 循环
+        var a = 1;
+        a = a+1;
+        a += 1; //自增1
+        // ++ 相当于 a +=1
+        a++; // 真正的自增1
+        console.log(a);
+
+        //{}里的内容执行后再执行i++
+        for(var i = 0; i<10; i++){
+            //执行体
+            console.log(i)
+        }
+        for(var i = 0; i<10; i +=2){
+            //执行体
+            console.log(i)
+            con
+        }
+        /*
+        1. var i = 0; i<10 满足条件就执行 { 执行体}
+        2. i++ ; i<10 满足执行 {执行体}，
+        3.然后循环执行（2）     var i = 0; i<10只执行一次
+        var i = 0;
+        if(i<10){
+            //执行体
+            i++;
+            continue;
+        }
+        */
+
+        // JS常用的 数据类型 数组 等同于 Python中的list
+        var days = [1,2,3,4,5,6,7,8,9,10];
+        console.log(typeof days)
+        console.log(days.length)
+        // object  '一切皆对象'
+        for(var i =0; i<days.length;i++){
+            console.log(i,days[i])
+        }
+
+        for(var i = days.length -1; i>=0; i--){
+            console.log(i,days[i])
+        }
+
+        //专题 ++ --
+        var aNumber = 1;
+        //var bNumeber = aNumeber++; // ++比 = 的运算符的优先级高
+        // 运算符的优先级
+        //  ！ > 算术运算符 > 关系运算符 > && > || > 赋值运算符
+        var bNumeber = ++aNumeber;//2 bNumber = aNumber +1; aNumber = bNumber，先增加，后使用
+        // bNumber =  aNumber(1) = aNumber+1(2);
+        console.log(aNumber,bNumber);// 2 1
+        // 如果 j = i++;如果i在前++在后，程序会对i先使用再自增。
+
+        // 函数 / 方法
+        console.log('******');
+        console.log(a_value);
+        function aFunc() {
+            //局部变量（在函数体里使用 var定义变量才是真正的局部变量）
+            console.log(a_value);
+            var a_value = 100;
+            console.log(a_value);
+        }
+        aFunc();
+        //有参有返回值
+        function sum(a,b) {
+            return a+b;
+        }
+
+    </script>
+</body>
+</html>
+
+
+<!-- 
+    1. 怎么让一个不定宽的div, 垂直水平居中
+    2. position 属性以及作用
+    3. 浮动与清除浮动 clear：both
+    4. 什么是BFC?哪些元素会生成bfc
+    5. box-sizing是什么？什么场景下使用？
+    6. px\em\rem的区别
+    7. CSS的引入方式有哪些？link 和 @import区别？
+    8. 流失布局和响应式布局的区别？
+    9. 渐进增强和优雅降级
+    10. CSS 隐藏元素的几种方式以及区别？ 
+    11.判断一个年份是否是闰年，并输出2000年到3000年之间的闰年。
+    function find_years(){// 输出 所有的闰年 // 返回一个数组}
+    function check_years(year){//是否是闰年 //返回值是布尔}
+-->

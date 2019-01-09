@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>下拉折叠</title>
+    <style>
+        html,body,ul,li{
+            padding: 0;
+            margin: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .menus{
+            padding-left: 20px;
+            padding-top: 20px;
+        }
+        .menus > ul > li > ul{
+            display: none;
+        }
+        .menus > ul > li > ul > li >ul{
+            display: none;
+        }
+        .active{
+            background-color: #f00;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!--  -->
+    <div class="menus">
+        <ul>
+            <li>
+                河南省
+                <ul>
+                    <li>郑州市
+                        <ul>
+                            <li>中原区</li>
+                            <li>金水区</li>
+                            <li>高新区</li>
+                        </ul>
+                    </li>
+                    <li>新乡市
+                        <ul>
+                            <li>中原区</li>
+                            <li>金水区</li>
+                            <li>高新区</li>
+                        </ul>
+                    </li>
+                    <li>开封市
+                        <ul>
+                            <li>中原区</li>
+                            <li>金水区</li>
+                            <li>高新区</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                河北省
+                <ul>
+                    <li>石家庄
+                        <ul>
+                            <li>中原区</li>
+                            <li>金水区</li>
+                            <li>高新区</li>
+                        </ul>
+                    </li>
+                    <li>邯郸
+                        <ul>
+                            <li>中原区</li>
+                            <li>金水区</li>
+                            <li>高新区</li>
+                        </ul>
+                    </li>
+                    <li>唐山
+                        <ul>
+                            <li>中原区</li>
+                            <li>金水区</li>
+                            <li>高新区</li>
+                        </ul>
+                    </li>
+                    <li>保定
+                        <ul>
+                            <li>中原区</li>
+                            <li>金水区</li>
+                            <li>高新区</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    var li_el = document.querySelectorAll('.menus > ul >li')
+    var ul_el = document.querySelectorAll('.menus > ul >li > ul')
+    // var 可以改为let
+    // let 是局部变量，var 是全局变量（在哪声明都是）
+    for(var i = 0; i<li_el.length; i++){
+        var item = li_el[i]
+        item.index = i
+        console.log('this:',this)
+        // this 离谁最近，谁就是this ，如果没有 this 就是window
+        item.onclick = function () {
+            console.log(this)
+            console.log(item.index)
+            // 遍历所有的省
+            // for( var j = 0; j<li_el.length; j++){
+            //     //进行赋值 className
+            //     // classList.remove('one) 只清除one一个
+            //     // className = '' 表示class全部清空
+            //     li_el[j].className = ''
+            //     ul_el[j].style.display = 'none'
+            // } 
+
+            // className = 'active' 给class重新赋值
+            // this.className = 'active'
+            // ul_el[this.index].style.display = 'block';
+
+            var flag = this.querySelector('ul').style.display
+            console.log('before:',flag)
+            // flag = ''  none
+            if(flag == 'none' || flag == ''){
+                flag = 'block'
+            }else{
+                flag = 'none'
+            }
+            
+            this.querySelector('ul').style.display = flag
+        }
+    }
+
+    // var three_li = document.querySelectorAll('.menus > ul > li > ul >li')
+    // for(var i =0; i<three_li.length;i++){
+    //     for(var j =0;j<three_li.length;i++){
+    //         var item = three_li[i][j]
+    //         item.index = j
+    //         item.onclick = function (){
+
+    //         }
+    //     }
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var ul_li_el = document.querySelectorAll('.menus > ul > li > ul >li')
+    for(var i = 0; i<ul_li_el.length; i++){
+        var ite = ul_li_el[i]
+        ite.index = i
+        // this 离谁最近，谁就是this ，如果没有 this 就是window
+        ite.onclick = function () {
+            var fla = this.querySelector('ul').style.display
+            // flag = ''  none
+            if(fla == 'none' || fla == ''){
+                fla = 'block'
+            }else{
+                fla = 'none'
+            }
+            this.querySelector('ul').style.display = fla    
+        }
+    }  
+</script>
+</html>
