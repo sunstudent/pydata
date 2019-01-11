@@ -26,9 +26,11 @@
         }
         // 获取input 内容发生改变时的触发
         // onchange 当文本内容发生改变且失去焦点时才会被触发
+        // 用户改变表单元素的内容
         input_el.onchange = function () {  
             console.log(this.value)
         }
+        //onselect 文本内容被选定
         input_el.onselect = function () {
             console.log(this.value)
         }

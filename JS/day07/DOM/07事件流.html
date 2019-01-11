@@ -44,7 +44,7 @@
         //冒泡兼容
         function stopPro(ev){
             var e = ev || window.event;
-            (typeof e.stopPropagation != 'function')?e.cancleBubble = true : e.stopPropagation()
+            (typeof e.stopPropagation != 'function')?e.cancleBubble = true : e.stopPropagation() //三元运算
         }
     </script>
 
@@ -53,7 +53,7 @@
         var baidu = document.querySelector('#baidu')
         baidu.onclick = function (ev){
             console.log('揍我自定义的事件')
-            return false
+            return false   //禁止了标签自带的方法
 
             //第二种
             // preventDefault() 去除元素标签自带的方法

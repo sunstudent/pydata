@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作业</title>
+    <style>
+        html,body,ul,li{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            display: none;
+            background-color: white;
+            width: 210px;
+            height: 200px;
+        }
+        ul>li{
+            width: 215px;
+            height: 50px;
+            margin-bottom: 10px;
+            background-color: rgb(0, 195, 255);
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="输入内容" style="width:210px;height:50px;">
+    <ul>
+        <li>你个糟老头子，坏的很！</li>
+        <li>好嗨哦，感觉人生已经到达了高潮，已经到达了巅峰。</li>
+        <li>盘它！</li>
+        <li>我的头可不是面团捏的，最后一下了。</li>
+    </ul>
+
+    <script>
+        var input = document.querySelector('input')
+        var ul = document.querySelector('ul')
+        var li = document.querySelectorAll('ul>li')
+        input.onmouseover = function () {
+            ul.style.display = 'block'
+            ul.onmouseout = function () {
+                ul.style.display = 'none'
+            }
+        }
+        input.onmouseout = function () {
+            ul.style.display = 'none'
+        }
+        ul.onmouseover = function () {
+            ul.style.display = 'block'
+        }
+        var li = document.querySelectorAll('li')
+        ul.addEventListener('click',function (ev){
+            input.value = ev.target.textContent
+        },false)
+    </script>
+</body>
+</html>

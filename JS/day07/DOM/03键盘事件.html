@@ -8,12 +8,18 @@
 </head>
 <body>
     <script>
+        //键盘的某个键被按下或按住
         window.onkeydown = function (ev) {
             console.log('key down')
             console.log(ev.key)
         }
+        //键盘的某个键被按下
         onkeypress = function (ev) {
             console.log('key press')
+        }
+        //键盘的某个键被松开
+        onkeyup = function (ev) {  
+            console.log('key up')
         }
     </script>
 </body>
